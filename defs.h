@@ -28,7 +28,12 @@
 /******************************************************************************
     DEFINES - FOR GLOBAL/SYSTEM USE
 ******************************************************************************/
-#define ZERO 0UL  //!< Declare a intuitive value for generic use.
+
+/**
+	@brief Declare some intuitive values for generic use.
+*/
+#define ZERO 0UL	//!< Value zero for generic use.
+#define ONE  1UL	//!< Value one for generic use.
 
 /**
  * @brief Macros used to define structures and buffers.
@@ -91,9 +96,9 @@ typedef unsigned long long int QWORD;  //!< 64-bit unsigned integer type.
 #if !defined(FALSE) && !defined(TRUE)
 typedef enum bool_t
 {
-   FALSE = 0,                          //!< 8-bit for false
-   TRUE  = 1,                          //!< 8-bit for true
-} __attribute__((__packed__)) bool_t;  //!< Generic boolean type
+   FALSE = (BYTE)ZERO,						//!< 8-bit for false
+   TRUE  = (BYTE)ONE,						//!< 8-bit for true
+} __attribute__((__packed__)) bool_t;	//!< Generic boolean type
 #endif
 
 

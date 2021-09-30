@@ -59,7 +59,6 @@ static int subrotine( int, int, int, ...);
 //Short local function implementation description.
 static int local_function( int Param1, int Param2, int Param3, ...)
 {
-
     return 0;
 }
 
@@ -83,6 +82,15 @@ int function_ext( int Param1, int Param2, int Param3, ...)
     return 0;
 }
 
+
+
+int main( int argc, char *argv[] )
+{
+	UNUSED(argc);
+	UNUSED(argv);
+	
+	return 0;
+}
 
 /******************************************************************************
     END OF FILE - TEMPLATE.C

@@ -1,0 +1,1 @@
+/usr/bin/gcc CMakeFiles/Resources.dir/ResourcesTest.c.o -o Resources 
