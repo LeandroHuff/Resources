@@ -89,6 +89,8 @@ int main( int argc, char *argv[] )
 	UNUSED(argc);
 	UNUSED(argv);
 	
+	printf("Resources file test.\n");
+	
 	return 0;
 }
 
