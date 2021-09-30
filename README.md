@@ -11,4 +11,4 @@ To build de project:
 	make clean
 	make | make VERBOSE=1
 	
-at this point, a binary file named Resource will be created into build directory.	
+at this point, a binary file named Resources will be created into build directory.	
