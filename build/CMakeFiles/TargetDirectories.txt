@@ -1,3 +1,0 @@
-/home/dell/Projects/SourceCodes/build/CMakeFiles/rebuild_cache.dir
-/home/dell/Projects/SourceCodes/build/CMakeFiles/Resources.dir
-/home/dell/Projects/SourceCodes/build/CMakeFiles/edit_cache.dir
