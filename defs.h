@@ -45,12 +45,19 @@
 /**
 	@brief Declare some intuitive values for generic use.
 */
-#define ERROR  (  -1)  //!< Value for generic error.
 #define ZERO   ( 0UL)	//!< Value zero for generic use.
 #define ONE    ( 1UL)	//!< Value one for generic use.
 
+#define ERROR      (  -1)  //!< Value for generic error.
+#define SUCCESSFUL (ZERO)  //!< Value for successful.
+
 #define SFALSE (0xAA) //!< Value for false state at an safety environment.
 #define STRUE  (0x55) //!< Value for true state at an safety environment.
+
+#ifndef PNULL
+#define PNULL (void*(0))
+#endif
+
 
 /**
  * @brief Macros used to define structures and buffers.
@@ -65,9 +72,10 @@
 /**
  * @brief Macros used to alloc block memory or release them.
  */
-#define MALLOC(size)      malloc(size)                                //!< Alloc memory for data size.
-#define CALLOC(type,num)  (type*)calloc(num, sizeof(type))            //!< Alloc memory for a num of data type size and clear itself.
-#define FREE(ptr)         if(ptr != NULL) { free(ptr); ptr = NULL; }  //!< Check valid pointer, release memory block and set pointer to NULL.
+#define MALLOC(size)      malloc(size)                                  //!< Alloc memory for data size.
+#define CALLOC(type,num)  (type*)calloc(num, sizeof(type))              //!< Alloc memory for a num of data type size and clear itself.
+#define STRDUP(str)       (char*)strdup(str)                            //!< Alloc fit memory to store the string up to null terminator inclusive.
+#define FREE(ptr)         if(ptr != NULL) { free(ptr); ptr = NULL; }    //!< Check valid pointer, release memory block and set pointer to NULL.
 
 /**
  * @brief Macro to calc minimum and maximum values for an signed and unsigned integer type (8, 16, 32, 64 bits).
@@ -81,7 +89,7 @@
  * @brief Macros used to check function parameters
  */
 #define UNUSED(var) ((void)var)                                         //!< Declare an unused variable or function parameter.
-#define CHECK_NULL_PTR(ptr,code)       if(ptr  == NULL){ return code; } //!< Check null parameter pointer and return code.
+#define CHECK_NULL_PTR(ptr,code)       if(ptr == NULL) { return code; } //!< Check null parameter pointer and return code.
 #define CHECK_DIFF_VALUE(var,val,code) if(var != val)  { return code; } //!< Compare parameter value and return code if different.
 #define CHECK_EQU_VALUE(var,val,code)  if(var == val)  { return code; } //!< Compare parameter value and return code if equal.
 
