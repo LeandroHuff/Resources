@@ -8,17 +8,21 @@
  * @copyright   Not copyrighted software, it has not warrant.
  */
 
-#ifndef DEFS_H
-#define DEFS_H
+#ifndef __DEFS_H__
+#define __DEFS_H__
+
 
 /******************************************************************************
     INCLUDES (LIBS/SYSTEM)
 ******************************************************************************/
-#include <stddef.h>     //For
+#include <stddef.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <stdio.h>
+#include "text.h"
 
 /******************************************************************************
     INCLUDES (USER)
@@ -61,6 +65,12 @@
 #define CHECK_DIFF_VALUE(var,val,code) if(var != val)  { return code; } //!< Compare parameter value and return code if different.
 #define CHECK_EQU_VALUE(var,val,code)  if(var == val)  { return code; } //!< Compare parameter value and return code if equal.
 
+#define CHECK_NULL(p1,r)               if  (p1 == NULL)                                                                   return r
+#define CHECK_NULL_2(p1,p2,r)          if( (p1 == NULL) || (p2 == NULL) )                                                 return r
+#define CHECK_NULL_3(p1,p2,p3,r)       if( (p1 == NULL) || (p2 == NULL) || (p3 == NULL) )                                 return r
+#define CHECK_NULL_4(p1,p2,p3,P4,r)    if( (p1 == NULL) || (p2 == NULL) || (p3 == NULL) || (p4 == NULL) )                 return r
+#define CHECK_NULL_5(p1,p2,p3,P4,P5,r) if( (p1 == NULL) || (p2 == NULL) || (p3 == NULL) || (p4 == NULL) || (p5 == NULL) ) return r
+
 
 /******************************************************************************
     TYPEDEFS - FOR GLOBAL/SYSTEM USE
@@ -89,13 +99,13 @@ typedef unsigned long int      DWORD;  //!< 32-bit unsigned integer type.
 typedef unsigned long long int QWORD;  //!< 64-bit unsigned integer type.
 
 #if !defined(FALSE) && !defined(TRUE)
-typedef enum bool_t
+typedef enum
 {
    FALSE = 0,                          //!< 8-bit for false
    TRUE  = 1,                          //!< 8-bit for true
-} __attribute__((__packed__)) bool_t;  //!< Generic boolean type
+} __attribute__((__packed__)) boolean_t;  //!< Generic boolean type
 #endif
 
 
 
-#endif //DEFS_H
+#endif // #ifndef __DEFS_H_
