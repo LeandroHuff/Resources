@@ -18,15 +18,8 @@
                 HEREUNDER.
  */
 
-<<<<<<< HEAD
 #ifndef __DEFS_H__
 #define __DEFS_H__
-
-=======
-
-#ifndef __DEFS_H__
-#define __DEFS_H__
->>>>>>> 6102c1d1c92f655d7f2e59915c0c4a8c992b375f
 
 /******************************************************************************
     INCLUDES (LIBS/SYSTEM)
@@ -38,10 +31,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
-<<<<<<< HEAD
 #include "text.h"
-=======
->>>>>>> 6102c1d1c92f655d7f2e59915c0c4a8c992b375f
 
 /******************************************************************************
     INCLUDES (USER)
@@ -55,25 +45,29 @@
 /**
 	@brief Declare some intuitive values for generic use.
 */
-#define ZERO 0UL	//!< Value zero for generic use.
-#define ONE  1UL	//!< Value one for generic use.
+#define ERROR  (  -1)  //!< Value for generic error.
+#define ZERO   ( 0UL)	//!< Value zero for generic use.
+#define ONE    ( 1UL)	//!< Value one for generic use.
+
+#define SFALSE (0xAA) //!< Value for false state at an safety environment.
+#define STRUE  (0x55) //!< Value for true state at an safety environment.
 
 /**
  * @brief Macros used to define structures and buffers.
  */
-#define DEF_INT(type, var) type var = 0; //!< Declare an integer variable on memory and clear the space.
-#define DEF_FLOAT(type, var) type var = 0.0f; //!< Declare a float variable on memory and clear the space.
-#define DEF_STRUCT(st, var) st var = {0}; //!< Declare a structure on memory and clear the space.
-#define DEF_BUFFER(type, buffer, elements) type buffer[elements];//!< Declare a buffer (vector) on memory.
-#define CLR_BUFFER(buffer) memset(buffer, ZERO, sizeof(buffer)); //!< Clear buffer memory space.
-#define CLR_MEMORY(ptr,size) memset(ptr, ZERO, size); //!< Clear buffer memory space pointed by ptr.
+#define DEF_INT(type, var)            type var = 0                          //!< Declare an integer variable on memory and clear the space.
+#define DEF_FLOAT(type, var)          type var = 0.0f                       //!< Declare a float variable on memory and clear the space.
+#define DEF_STRUCT(st, var)           st var   = {0}                        //!< Declare a structure on memory and clear the space.
+#define DEF_BUFFER(type, vect, size)  type vect[size]                       //!< Declare a buffer (vector) on memory.
+#define CLR_BUFFER(buffer)            memset(buffer, ZERO, sizeof(buffer))  //!< Clear buffer memory space.
+#define CLR_MEMORY(ptr, size)         memset(ptr, ZERO, size)               //!< Clear buffer memory space pointed by ptr.
 
 /**
  * @brief Macros used to alloc block memory or release them.
  */
-#define MALLOC(size) malloc(size);                          //!< Alloc memory for data size.
-#define CALLOC(type,num) (type*)calloc(num, sizeof(type));  //!< Alloc memory for a num of data type size and clear itself.
-#define FREE(ptr) if(ptr != NULL) { free(ptr);ptr = NULL; } //!< Check valid pointer, release memory block and set pointer to NULL.
+#define MALLOC(size)      malloc(size)                                //!< Alloc memory for data size.
+#define CALLOC(type,num)  (type*)calloc(num, sizeof(type))            //!< Alloc memory for a num of data type size and clear itself.
+#define FREE(ptr)         if(ptr != NULL) { free(ptr); ptr = NULL; }  //!< Check valid pointer, release memory block and set pointer to NULL.
 
 /**
  * @brief Macro to calc minimum and maximum values for an signed and unsigned integer type (8, 16, 32, 64 bits).
@@ -127,19 +121,15 @@ typedef unsigned long long int QWORD;  //!< 64-bit unsigned integer type.
 #if !defined(FALSE) && !defined(TRUE)
 typedef enum
 {
-<<<<<<< HEAD
    FALSE = 0,                          //!< 8-bit for false
    TRUE  = 1,                          //!< 8-bit for true
-} __attribute__((__packed__)) boolean_t;  //!< Generic boolean type
+} __attribute__((__packed__)) BOOL_T;  //!< Generic boolean type
 #endif
 
+typedef enum
+{
+   sFALSE = 0xAA,						//!< 8-bit for false for safety environment
+   sTRUE  = 0x55,						//!< 8-bit for true for safety environment
+} __attribute__((__packed__)) safetyBool_t;	//!< Safety boolean type
 
-
-=======
-   FALSE = (BYTE)ZERO,						//!< 8-bit for false
-   TRUE  = (BYTE)ONE,						//!< 8-bit for true
-} __attribute__((__packed__)) bool_t;	//!< Generic boolean type
-#endif
-
->>>>>>> 6102c1d1c92f655d7f2e59915c0c4a8c992b375f
 #endif // #ifndef __DEFS_H_
